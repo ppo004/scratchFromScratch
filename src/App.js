@@ -2,8 +2,18 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import MidArea from "./components/MidArea";
 import PreviewArea from "./components/PreviewArea";
-
+import { useDispatch,useSelector } from 'react-redux';
+import { executeBlocks } from "./actions";
 export default function App() {
+  
+  const dispatch = useDispatch();
+  const sprite = useSelector((state) => {
+    return state.sprite;
+  });
+  const handleExecute = () => {
+    dispatch(executeBlocks());
+  };
+
   return (
     <div className="bg-blue-100 pt-6 font-sans">
       <div className="h-screen overflow-hidden flex flex-row  ">
@@ -12,6 +22,12 @@ export default function App() {
         </div>
         <div className="w-1/3 h-screen overflow-hidden flex flex-row bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
           <PreviewArea />
+          {/* <button onClick={handleExecute}>Execute</button>
+          <div style={{ border: '1px solid black', marginTop: '20px' }}>
+            <h2>Sprite</h2>
+            <div>Position: ({sprite.x.toFixed(2)}, {sprite.y.toFixed(2)})</div>
+            <div>Direction: {sprite.direction}°</div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -1,27 +1,35 @@
 // src/components/Block.js
-import React,{useState} from 'react';
-import { useDrag } from 'react-dnd';
+import React, { useState } from 'react';
+import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch } from 'react-redux';
 import { updateBlockValue } from '../actions';
 
-const Block = ({ id = Date.now(), type, initialValue, source }) => {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'BLOCK',
-    item: { id, type, initialValue, source },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+const Block = ({ id, type, initialValue, index, moveBlock, source }) => {
   const dispatch = useDispatch();
   const [value, setValue] = useState(initialValue);
-  console.log(value);
+  console.log(moveBlock);
+  const [, drag] = useDrag(() => ({
+    type: 'BLOCK',
+    item: { id, index, type, initialValue, source },
+  }));
+
+  const [, drop] = useDrop(() => ({
+    accept: 'BLOCK',
+    hover: (item) => {
+      if (item.index !== index) {
+        moveBlock(item.index, index);
+        item.index = index;
+      }
+    },
+  }));
+
   const handleChange = (e) => {
     setValue(e.target.value);
-    console.log(id,e.target.value)
     dispatch(updateBlockValue(id, e.target.value));
   };
+
   return (
-    <div ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }}>
+    <div ref={(node) => drag(drop(node))} style={{ padding: '10px', border: '1px solid black', margin: '5px 0' }}>
       {type}
       <input
         type="text"

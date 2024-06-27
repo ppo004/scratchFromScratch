@@ -1,7 +1,17 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 export default function CatSprite() {
+  const { x, y, direction } = useSelector((state) => state.sprite);
+
+  const spriteStyle = {
+    position: 'absolute',
+    left: `${x}px`,
+    top: `${y}px`,
+    transform: `rotate(${direction}deg)`,
+    transition: 'left 0.5s, top 0.5s, transform 0.5s', // Smooth transitions
+  };
   return (
+    <div style={spriteStyle}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="95.17898101806641"
@@ -180,5 +190,6 @@ export default function CatSprite() {
         </g>
       </g>
     </svg>
+    </div>
   );
 }
