@@ -1,10 +1,10 @@
-// src/actions/index.js
-import { MOVE_FORWARD, TURN_RIGHT, TURN_LEFT } from './actionTypes';
-
 export const ADD_BLOCK = 'ADD_BLOCK';
 export const REMOVE_BLOCK = 'REMOVE_BLOCK';
 export const UPDATE_BLOCK_VALUE = 'UPDATE_BLOCK_VALUE';
 export const MOVE_BLOCK = 'MOVE_BLOCK';
+export const MOVE_FORWARD = 'MOVE_FORWARD';
+export const TURN_RIGHT = 'TURN_RIGHT';
+export const TURN_LEFT = 'TURN_LEFT';
 
 export const addBlock = (block) => ({
   type: ADD_BLOCK,
@@ -25,27 +25,6 @@ export const moveBlock = (dragIndex, hoverIndex) => ({
   type: MOVE_BLOCK,
   payload: { dragIndex, hoverIndex },
 });
-
-export const executeBlocks = () => {
-  return (dispatch, getState) => {
-    const blocks = getState().blocks;
-    console.log("while handelling",blocks);
-    blocks.blocks.forEach((block) => {
-      switch (block.type) {
-        case 'Move':
-          dispatch({ type: 'MOVE_SPRITE', payload: parseInt(block.value, 10) });
-          break;
-        case 'Turn':
-          dispatch({ type: 'TURN_SPRITE', payload: parseInt(block.value, 10) });
-          break;
-        default:
-          break;
-      }
-    });
-  };
-};
-
-// actions.js
 
 export const moveForward = (steps) => ({
   type: MOVE_FORWARD,

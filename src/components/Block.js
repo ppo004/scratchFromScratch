@@ -1,20 +1,19 @@
-// src/components/Block.js
-import React, { useState } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
-import { useDispatch } from 'react-redux';
-import { updateBlockValue } from '../actions';
+import React, { useState } from "react";
+import { useDrag, useDrop } from "react-dnd";
+import { useDispatch } from "react-redux";
+import { updateBlockValue } from "../actions";
 
 const Block = ({ id, type, initialValue, index, moveBlock, source }) => {
   const dispatch = useDispatch();
   const [value, setValue] = useState(initialValue);
-  console.log(moveBlock);
+
   const [, drag] = useDrag(() => ({
-    type: 'BLOCK',
+    type: "BLOCK",
     item: { id, index, type, initialValue, source },
   }));
 
   const [, drop] = useDrop(() => ({
-    accept: 'BLOCK',
+    accept: "BLOCK",
     hover: (item) => {
       if (item.index !== index) {
         moveBlock(item.index, index);
@@ -29,13 +28,16 @@ const Block = ({ id, type, initialValue, index, moveBlock, source }) => {
   };
 
   return (
-    <div ref={(node) => drag(drop(node))} style={{ padding: '10px', border: '1px solid black', margin: '5px 0' }}>
-      {type}
+    <div
+      ref={(node) => drag(drop(node))}
+      className="block-container bg-gray-200 border border-gray-400 p-2 m-2 inline-block"
+    >
+      <div className="block-type bg-blue-500 text-white font-bold p-1">{type}</div>
       <input
         type="text"
         value={value}
         onChange={handleChange}
-        style={{ marginLeft: '10px' }}
+        className="block-input ml-2 border-none outline-none"
       />
     </div>
   );

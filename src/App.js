@@ -2,18 +2,7 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import MidArea from "./components/MidArea";
 import PreviewArea from "./components/PreviewArea";
-import { useDispatch,useSelector } from 'react-redux';
-import { executeBlocks } from "./actions";
 export default function App() {
-  
-  const dispatch = useDispatch();
-  const sprite = useSelector((state) => {
-    return state.sprite;
-  });
-  const handleExecute = () => {
-    dispatch(executeBlocks());
-  };
-
   return (
     <div className="bg-blue-100 pt-6 font-sans">
       <div className="h-screen overflow-hidden flex flex-row  ">

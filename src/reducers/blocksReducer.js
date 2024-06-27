@@ -1,4 +1,3 @@
-// src/reducers/index.js
 import {
   ADD_BLOCK,
   REMOVE_BLOCK,
@@ -11,7 +10,6 @@ const initialState = {
 };
 
 const blocksReducer = (state = initialState, action) => {
-  console.log("Action", action.type, action.payload);
   switch (action.type) {
     case ADD_BLOCK:
       return {

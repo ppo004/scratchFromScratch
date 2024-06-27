@@ -13,7 +13,7 @@ const MidArea = () => {
   const executeBlocks = () => {
     blocks.blocks.forEach((block) => {
       console.log("Inside block",block);
-      switch ('TURN_RIGHT') {
+      switch ('MOVE_FORWARD') {
         case 'MOVE_FORWARD':
           dispatch(moveForward(block.value));
           break;

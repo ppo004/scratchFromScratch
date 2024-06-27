@@ -4,7 +4,7 @@ export default function CatSprite() {
   const { x, y, direction } = useSelector((state) => state.sprite);
 
   const spriteStyle = {
-    position: 'absolute',
+    position: 'relative',
     left: `${x}px`,
     top: `${y}px`,
     transform: `rotate(${direction}deg)`,
