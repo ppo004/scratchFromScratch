@@ -17,3 +17,25 @@ export default function App() {
     </div>
   );
 }
+
+// import React from 'react';
+// import MidArea from './components/MidArea';
+// import Sidebar from './components/Sidebar';
+
+// const App = () => {
+//   return (
+//     <div>
+//       <h1>Scratch Clone</h1>
+//       <div>
+//         <Sidebar />
+//       </div>
+//       <div>
+//         <h2>Script Area</h2>
+//         <MidArea />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default App;
+
