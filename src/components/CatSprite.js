@@ -8,10 +8,10 @@ export default function CatSprite() {
     left: `${x}px`,
     top: `${y}px`,
     transform: `rotate(${direction}deg)`,
-    transition: 'left 0.5s, top 0.5s, transform 0.5s', // Smooth transitions
+    transition: 'left 0.5s, top 0.5s, transform 0.5s',
   };
   return (
-    <div style={spriteStyle}>
+    <div>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="95.17898101806641"
@@ -19,6 +19,7 @@ export default function CatSprite() {
       viewBox="0.3210171699523926 0.3000000357627869 95.17898101806641 100.04156036376953"
       version="1.1"
       xmlSpace="preserve"
+      style={spriteStyle}
     >
       <g>
         <g id="Page-1" stroke="none" fillRule="evenodd">

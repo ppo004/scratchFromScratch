@@ -6,7 +6,6 @@ module.exports = {
     app: "./src/index.js",
   },
   output: {
-    // filename: "app.js",
     path: path.resolve(__dirname, "public"),
   },
   module: {
@@ -24,7 +23,6 @@ module.exports = {
                   [
                     "postcss-preset-env",
                     {
-                      // Options
                     },
                   ],
                 ],

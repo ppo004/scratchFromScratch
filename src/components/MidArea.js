@@ -1,8 +1,7 @@
-// src/components/ScriptArea.js
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBlock, removeBlock,moveBlock, moveForward,turnRight, turnLeft } from '../actions';
+import { addBlock,turn, move, moveBlock } from '../actions';
 import Block from './Block';
 const MidArea = () => {
   const dispatch = useDispatch();
@@ -13,17 +12,13 @@ const MidArea = () => {
   const executeBlocks = () => {
     blocks.blocks.forEach((block) => {
       console.log("Inside block",block);
-      switch ('MOVE_FORWARD') {
-        case 'MOVE_FORWARD':
-          dispatch(moveForward(block.value));
+      switch (block.type) {
+        case 'MOVE':
+          dispatch(move(block.value));
           break;
-        case 'TURN_RIGHT':
-          dispatch(turnRight(block.value));
+        case 'TURN':
+          dispatch(turn(block.value));
           break;
-        case 'TURN_LEFT':
-          dispatch(turnLeft(block.value));
-          break;
-        // Handle other block types
         default:
           break;
       }

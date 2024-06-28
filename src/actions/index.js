@@ -2,8 +2,8 @@ export const ADD_BLOCK = 'ADD_BLOCK';
 export const REMOVE_BLOCK = 'REMOVE_BLOCK';
 export const UPDATE_BLOCK_VALUE = 'UPDATE_BLOCK_VALUE';
 export const MOVE_BLOCK = 'MOVE_BLOCK';
-export const MOVE_FORWARD = 'MOVE_FORWARD';
-export const TURN_RIGHT = 'TURN_RIGHT';
+export const MOVE = 'MOVE';
+export const TURN = 'TURN';
 export const TURN_LEFT = 'TURN_LEFT';
 
 export const addBlock = (block) => ({
@@ -26,17 +26,12 @@ export const moveBlock = (dragIndex, hoverIndex) => ({
   payload: { dragIndex, hoverIndex },
 });
 
-export const moveForward = (steps) => ({
-  type: MOVE_FORWARD,
+export const move = (steps) => ({
+  type: MOVE,
   payload: steps,
 });
 
-export const turnRight = (degrees) => ({
-  type: TURN_RIGHT,
-  payload: degrees,
-});
-
-export const turnLeft = (degrees) => ({
-  type: TURN_LEFT,
+export const turn = (degrees) => ({
+  type: TURN,
   payload: degrees,
 });
